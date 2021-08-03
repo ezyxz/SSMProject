@@ -1,5 +1,8 @@
 package com.xinyuan.iBatis.pojo;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("StudentFull")
 public class StudentFull {
     private int ID;
     private String NAME;

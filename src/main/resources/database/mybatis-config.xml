@@ -16,8 +16,8 @@
     
 <!--    起别名-->
     <typeAliases>
-        <typeAlias type="com.xinyuan.iBatis.pojo.Student" alias="Student"/>
-        <typeAlias type="com.xinyuan.iBatis.pojo.StudentFull" alias="StudentFull"/>
+<!--        <typeAlias type="com.xinyuan.iBatis.pojo.Student" alias="Student"/>-->
+<!--        <typeAlias type="com.xinyuan.iBatis.pojo.StudentFull" alias="StudentFull"/>-->
         <package name="com.xinyuan.iBatis.pojo"/>
     </typeAliases>
     <environments default="development">

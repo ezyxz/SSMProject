@@ -13,6 +13,9 @@ public interface StudentDao {
     //select 5 student
     List<Student> getStudentListMAX5();
 
+    //select  student by id and name
+    List<Student> getStudentListByIdAndName(Student student);
+
     //search student by ID
     Student getStudentById(int ID);
 
@@ -32,5 +35,6 @@ public interface StudentDao {
     List<Student> getStudentByLike(String value);
 
     StudentFull getStudentByIdWithScore(int id);
+
 
 }

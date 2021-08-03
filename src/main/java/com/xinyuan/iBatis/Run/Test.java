@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Test {
     public static void main(String[] args) {
-        test8();
+        test6();
     }
 
 
@@ -79,6 +79,48 @@ public class Test {
             StudentDao mapper = sqlSession.getMapper(StudentDao.class);
             StudentFull student = mapper.getStudentByIdWithScore(20);
             System.out.println(student);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            sqlSession.close();
+
+        }
+    }
+    static void test5(){
+        //获取sqlSession
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        //获取 Mapper
+        try {
+
+            StudentDao mapper = sqlSession.getMapper(StudentDao.class);
+            List<Student> list = mapper.getStudentListByIdAndName(new Student(20, "gcjw", 0));
+            for (Student student : list) {
+                System.out.println(student);
+
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            sqlSession.close();
+
+        }
+    }
+    static void test6(){
+        //获取sqlSession
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        //获取 Mapper
+        try {
+
+            StudentDao mapper = sqlSession.getMapper(StudentDao.class);
+            List<Student> list = mapper.getStudentListByIdAndName(new Student(20, null, 0));
+            for (Student student : list) {
+                System.out.println(student);
+
+            }
 
         }catch(Exception e){
             e.printStackTrace();

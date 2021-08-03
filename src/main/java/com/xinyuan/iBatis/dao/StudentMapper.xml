@@ -12,9 +12,17 @@
     select * from STUDENT LIMIT 5
   </select>
 
+<!--  use if-->
+  <select id="getStudentListByIdAndName" parameterType="Student" resultType="Student">
+    select * from student where ID = #{ID} and NAME = #{NAME}
+    <if test="NAME != null"></if>
+  </select>
+
+
     <select id="getStudentById"  parameterType="int" resultType="Student">
     select * from STUDENT where ID = #{ID}
   </select>
+
 
 <!--    对象中的属性可以直接取出来-->
     <update id="insertStudent"  parameterType="Student" >
