@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--核心配置文件-->
+<configuration>
+<!--    引入外部文件-->
+    <properties resource="database/jdbc.aliyun.properties"></properties>
+<!--    <settings>-->
+<!--&lt;!&ndash;        标准日志&ndash;&gt;-->
+<!--&lt;!&ndash;        <setting name="logImpl" value="STDOUT_LOGGING"/>&ndash;&gt;-->
+<!--        <setting name="logImpl" value="LOG4J"/>-->
+
+<!--    </settings>-->
+
+    
+<!--    起别名-->
+    <typeAliases>
+        <typeAlias type="com.xinyuan.iBatis.pojo.Student" alias="Student"/>
+        <typeAlias type="com.xinyuan.iBatis.pojo.StudentFull" alias="StudentFull"/>
+        <package name="com.xinyuan.iBatis.pojo"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+<!--            事务管理器 JDBC->Managed-->
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+<!--    每一个Mapper.xml 都需要在Mybatis核心配置文件中注册-->
+    <mappers>
+        <mapper resource="com/xinyuan/iBatis/dao/StudentMapper.xml"></mapper>
+    </mappers>
+</configuration>

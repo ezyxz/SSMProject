@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinyuan.iBatis.dao.StudentDao">
+
+    <select id="getStudentList" resultType="Student">
+    select * from STUDENT
+  </select>
+
+    <select id="getStudentListMAX5" resultType="Student">
+    select * from STUDENT LIMIT 5
+  </select>
+
+    <select id="getStudentById"  parameterType="int" resultType="Student">
+    select * from STUDENT where ID = #{ID}
+  </select>
+
+<!--    对象中的属性可以直接取出来-->
+    <update id="insertStudent"  parameterType="Student" >
+    insert into STUDENT ( NAME, NUMBER ) values (#{NAME}, #{NUMBER})
+  </update>
+
+    <update id="updateStudentById"  parameterType="Student" >
+    update student set  name = #{NAME}  where id = #{ID}
+  </update>
+
+    <delete id="deleteStudent"  parameterType="int" >
+    delete from student  where id = #{ID}
+  </delete>
+
+<!--    万能的map-->
+    <select id="getStudentByNaneAndNumber"  parameterType="map" resultType="student">
+    select * from student where name = #{name} and number = #{number}
+  </select>
+
+  <resultMap id="SwitchStudent" type="StudentFull">
+    <result column="ID" property="ID"/>
+    <result column="NAME" property="NAME"/>
+    <result column="NUMBER" property="SCORE"/>
+  </resultMap>
+  <select id="getStudentByIdWithScore" parameterType="int" resultMap="SwitchStudent">
+        select * from student where id = #{id}
+  </select>
+
+    <select id="getStudentByLike"  parameterType="String" resultType="Student">
+    select * from student where name like #{value}
+  </select>
+
+</mapper>
